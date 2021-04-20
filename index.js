@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://jiyu:abcd123@practice.lmq5s.mongodb.net/myFirstD
   .catch(err => console.log(err));
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World! 안녕');
 });
 
 app.post('/register', (req, res) => {
