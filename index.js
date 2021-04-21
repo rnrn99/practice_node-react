@@ -5,13 +5,15 @@ const port = 3000;
 const { User } = require("./models/User");
 const mongoose = require('mongoose');
 
+const config = require('./config/key');
+
 // app.use(bodyParser.urlencoded({extended: true}));
 // app.use(bodyParser.json());
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://jiyu:abcd123@practice.lmq5s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
