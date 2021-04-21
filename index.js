@@ -1,14 +1,13 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-// var bodyParser = require('body-parser');
+
 const { User } = require("./models/User");
 const mongoose = require('mongoose');
-
 const config = require('./config/key');
 
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.use(bodyParser.json());
+
+
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
