@@ -60,7 +60,7 @@ userSchema.methods.comparePassword = function(plainPassword, cb) {
         if(err) return cb(err);
         else cb(null, isMatch);
     });
-};
+}
 
 userSchema.methods.generateToken = function(cb) {
     // jsonwebtoken 이용해 토큰 생성
@@ -72,7 +72,22 @@ userSchema.methods.generateToken = function(cb) {
         if(err) return cb(err);
         else cb(null, user);
     });
-};
+}
+
+userSchema.statics.findByToken = function(token, cb) {
+    // decode token
+    var user = this;
+    
+    jwt.verify(token, 'secretToken', function(err, decoded){
+        
+        user.findOne({"_id": decoded, "token": token}, function(err, user){
+            if(err) return cb(err);
+            cb(null, user);
+        });
+    });
+}
+
+
 
 const User = mongoose.model('User', userSchema);
 
